@@ -4,24 +4,12 @@ import axios from 'axios';
 function GameInfo(props) {
 
   console.log('clg da props', props)
-  const[information, setInformation] = useState({})
-  const[isLoading, setLoading] = useState(false)
+  console.log('clg da props info', props.information)
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   axios
-  //     .get('https://build-week-game-server.herokuapp.com/api/adv/init/')
-  //       .then(res => {
-  //         console.log('clg da res.data', res.data)
-  //         return res.data
-  //       }).catch( error => {
-  //         console.log('Error loading..', error)
-  //       })
-  // }, [])
   return (
     <div className="adv-init">
       <p>
-        id: {props.information.uuid}
+        {/* id: {props.information.uuid} */}
       </p>
 
       <p>

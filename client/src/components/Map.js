@@ -3,16 +3,21 @@ import axios from 'axios';
 
 import GameInfo from './GameInfo'
 
-function Map() {
+function Map(props) {
   const[information, setInformation] = useState({})
   const [isLoading, setLoading] = useState(false)
   useEffect(() => {
     setLoading(true);
+
     axios
-      .get('https://build-week-game-server.herokuapp.com/api/adv/init/')
+      .get('https://build-week-game-server.herokuapp.com/api/adv/init/', {headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Token ${localStorage.getItem("key")}`
+      }})
         .then(res => {
-          console.log('clg da res.data', res.data)
           setInformation(res.data)
+          console.log('clg da res.data', setInformation(res.data))
+          localStorage.getItem('key')
         }).catch( error => {
           console.log('Error loading..', error)
         })
