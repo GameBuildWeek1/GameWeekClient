@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React from 'react'
 
 function GameInfo(props) {
 
@@ -9,7 +8,7 @@ function GameInfo(props) {
   return (
     <div className="adv-init">
       <p>
-        {/* id: {props.information.uuid} */}
+        id: {props.information.uuid}
       </p>
 
       <p>
