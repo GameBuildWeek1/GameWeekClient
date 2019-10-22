@@ -11,7 +11,7 @@ function Register(props) {
   const handleRegister = e => {
     e.preventDefault();
     axios
-      .post('https://lambda-mud-test.herokuapp.com/api/registration/', registerAcc)
+      .post('https://build-week-game-server.herokuapp.com/api/registration/', registerAcc)
         .then(res => {
           localStorage.setItem("key", res.data.key);
         }).catch(error => {
