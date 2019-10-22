@@ -11,7 +11,7 @@ function Login(props) {
   const handleLogin = e => {
     e.preventDefault();
     axios
-      .post('http://lambda-mud-test.herokuapp.com/api/login/', userAcc)
+      .post('https://build-week-game-server.herokuapp.com/api/login/', userAcc)
         .then(res => {
           console.log(res.data)
           localStorage.setItem("key", res.data.key)
