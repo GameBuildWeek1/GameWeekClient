@@ -1,49 +1,59 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-import GameInfo from './GameInfo'
-import Controls from './Controls'
+import GameInfo from "./GameInfo";
+import Controls from "./Controls";
 
 function Map(props) {
-  const[information, setInformation] = useState({})
-  const [isLoading, setLoading] = useState(false)
-  const [move, setMove] = useState("")
+  const [information, setInformation] = useState({});
+  const [isLoading, setLoading] = useState(false);
+  const [move, setMove] = useState("");
   useEffect(() => {
     setLoading(true);
 
     axios
-      .get('https://build-week-game-server.herokuapp.com/api/adv/init/', {headers: {
-        'Content-type': 'application/json',
-        'Authorization': `Token ${localStorage.getItem("key")}`
-      }})
-        .then(res => {
-          setInformation(res.data)
-          console.log('clg da res.data', res.data)
-          localStorage.getItem('key')
-        }).catch( error => {
-          console.log('Error loading..', error)
-        })
-  }, [])
+      .get("https://build-week-game-server.herokuapp.com/api/adv/init/", {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Token ${localStorage.getItem("key")}`
+        }
+      })
+      .then(res => {
+        setInformation(res.data);
+        console.log("clg da res.data", res.data);
+        localStorage.getItem("key");
+      })
+      .catch(error => {
+        console.log("Error loading..", error);
+      });
+  }, []);
 
   const handleInput = e => {
     e.preventDefault();
 
-    setMove(e.target.value)
+    setMove(e.target.value);
 
     axios
-      .post('https://build-week-game-server.herokuapp.com/api/adv/move/', {move,}, {headers: {
-        'Content-type': 'application/json',
-        'Authorization': `Token ${localStorage.getItem("key")}`
-      }})
-        .then(res => {
-          setInformation(res.data)
-        }).catch(error => {
-          console.log('error moving..',error)
-        })
-  }
+      .post(
+        "https://build-week-game-server.herokuapp.com/api/adv/move/",
+        { move },
+        {
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Token ${localStorage.getItem("key")}`
+          }
+        }
+      )
+      .then(res => {
+        setInformation(res.data);
+      })
+      .catch(error => {
+        console.log("error moving..", error);
+      });
+  };
 
-  console.log('clg move', move)
-  console.log('clg move obj', {move})
+  console.log("clg move", move);
+  console.log("clg move obj", { move });
 
   // var c = document.getElementById("myCanvas");
   // var ctx = c.getContext("2d");
@@ -52,14 +62,14 @@ function Map(props) {
   // ctx.stroke();
 
   return (
-    <div className="map" >
+    <div className="map">
       {/* <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
       </canvas> */}
 
-      <Controls handleInput={handleInput}/>
+      <Controls handleInput={handleInput} />
       <GameInfo information={information} />
     </div>
-  )
+  );
 }
 
-export default Map
+export default Map;
