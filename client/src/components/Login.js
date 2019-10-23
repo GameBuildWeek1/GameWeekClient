@@ -5,7 +5,7 @@ import { withRouter } from "react-router";
 function Login(props) {
   // const [isLogin, setLogin] = useState(false);
   const [userAcc, setUserAcc] = useState({ username: "", password: "" });
-
+  // const [isLoading, SetIsLoading] =
   const handleLogin = e => {
     e.preventDefault();
     axios
@@ -13,6 +13,8 @@ function Login(props) {
       .then(res => {
         console.log(res.data);
         localStorage.setItem("key", res.data.key);
+        props.history.push('/game')
+        window.location.reload()
       })
       .catch(error => {
         console.log("error logging in", error);

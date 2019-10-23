@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-//import { Route } from "react-router-dom";
-import Login from "../src/components/Login";
-import Register from "../src/components/Register";
-import Map from "./components/Map";
+import { Route, Router as BrowserRouter, Switch } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register"
+import Map from "./components/Map"
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -19,7 +19,9 @@ function App() {
       {isLoggedIn ? (
         <div>
           <h2>Game Info</h2>
-          <Map />
+
+          <Route path="/game" component={Map}/>
+
         </div>
       ) : (
         <div>
@@ -32,5 +34,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
