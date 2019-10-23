@@ -3,6 +3,7 @@ import axios from "axios";
 
 import GameInfo from "./GameInfo";
 import Controls from "./Controls";
+import Chat from "./chat/Chat";
 
 function Map(props) {
   const [information, setInformation] = useState({});
@@ -68,6 +69,7 @@ function Map(props) {
 
       <Controls handleInput={handleInput} />
       <GameInfo information={information} />
+      <Chat title={"Esc'D"} />
     </div>
   );
 }
