@@ -31,7 +31,7 @@ function Map(props) {
     setMove(e.target.value)
 
     axios
-      .post('https://build-week-game-server.herokuapp.com/api/adv/move/', {move,}, {headers: {
+      .post('https://build-week-game-server.herokuapp.com/api/adv/move/', {direction:move}, {headers: {
         'Content-type': 'application/json',
         'Authorization': `Token ${localStorage.getItem("key")}`
       }})
