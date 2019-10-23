@@ -3,7 +3,7 @@ import axios from "axios";
 import { withRouter } from "react-router";
 
 function Login(props) {
-  const [isLogin, setLogin] = useState(false);
+  // const [isLogin, setLogin] = useState(false);
   const [userAcc, setUserAcc] = useState({ username: "", password: "" });
 
   const handleLogin = e => {
