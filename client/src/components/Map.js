@@ -264,7 +264,7 @@ var renderMap = (ctxmap, sx,sy) =>
               {
                 let color = randomColorOffset*y**(x*randomColorOffset+2) % 30 + 45;
                 ctxmap.fillStyle = `rgb(${color}, ${color}, ${color})`
-                texture = wallTexture;
+                //texture = wallTexture;
               }
             } catch{};
           });
@@ -278,7 +278,7 @@ var renderMap = (ctxmap, sx,sy) =>
           ctxmap.fillStyle = '#999';
           let color = (randomColorOffset*y+2)**(x*randomColorOffset+2) % 40 + 123;
           ctxmap.fillStyle = `rgb(${color}, ${color}, ${color})`
-          texture = floorTexture;
+          //texture = floorTexture;
         }
         if(!texture)
           ctxmap.fillRect(x*tileSize-sx*tileSize,y*tileSize-sy*tileSize,tileSize-1,tileSize-1);
