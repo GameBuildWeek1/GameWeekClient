@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
+import { HOST_URL } from "./utils";
 
 function Login(props) {
   // const [isLogin, setLogin] = useState(false);
@@ -9,7 +10,7 @@ function Login(props) {
   const handleLogin = e => {
     e.preventDefault();
     axios
-      .post("https://build-week-game-server.herokuapp.com/api/login/", userAcc)
+      .post(`${HOST_URL}/api/login/`, userAcc)
       .then(res => {
         console.log(res.data);
         localStorage.setItem("key", res.data.key);
