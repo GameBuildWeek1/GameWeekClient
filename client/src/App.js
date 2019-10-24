@@ -26,7 +26,6 @@ function App() {
       {/* <h1>ESC'D</h1> */}
       {isLoggedIn ? (
         <div>
-          <h2>Game Info</h2>
 
           <Route path="/game" component={Map}/>
 
