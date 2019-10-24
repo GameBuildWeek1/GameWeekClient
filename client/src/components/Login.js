@@ -31,10 +31,10 @@ function Login(props) {
 
   return (
     <div className="wrapper">
-      <h1>ESC'D</h1>
       <div className="loginForm">
+        <h1>Welcome to ESC Dungeon</h1>
         <form className="form" onSubmit={handleLogin}>
-          <input
+          <input className="formInput"
             type="text"
             name="username"
             placeholder="username"
@@ -42,8 +42,8 @@ function Login(props) {
             onChange={loginChange}
           />
 
-          <input
-            type="text"
+          <input className="formInput"
+            type="password"
             name="password"
             placeholder="password"
             value={userAcc.password}
