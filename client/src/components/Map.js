@@ -46,6 +46,12 @@ function Map(props) {
         })
   }
 
+  const handleLogout = e => {
+    e.preventDefault()
+    props.history.push("/login")
+    localStorage.clear();
+    window.location.reload();
+  }
   console.log("clg move", move);
   console.log("clg move obj", { move });
 
@@ -59,7 +65,7 @@ function Map(props) {
     <div className="map">
       {/* <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
       </canvas> */}
-
+      <button onClick={handleLogout}>Logout</button>
       <Controls handleInput={handleInput} />
       <GameInfo information={information} />
       <Chat title={'dungeon'}/>
