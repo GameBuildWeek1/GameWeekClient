@@ -8,7 +8,7 @@ import Chat from "./chat/Chat";
 function Map(props) {
   const [information, setInformation] = useState({});
   const [isLoading, setLoading] = useState(false);
-  const [move, setMove] = useState("");
+  const [direction, setDirection] = useState("");
   useEffect(() => {
     setLoading(true);
 
@@ -32,12 +32,12 @@ function Map(props) {
   const handleInput = e => {
     e.preventDefault();
 
-    setMove(e.target.value);
+    setDirection(e.target.value);
 
     axios
       .post(
         "https://build-week-game-server.herokuapp.com/api/adv/move/",
-        { move },
+        { direction },
         {
           headers: {
             "Content-type": "application/json",
@@ -53,8 +53,8 @@ function Map(props) {
       });
   };
 
-  console.log("clg move", move);
-  console.log("clg move obj", { move });
+  console.log("clg move", direction);
+  console.log("clg move obj", { direction });
 
   // var c = document.getElementById("myCanvas");
   // var ctx = c.getContext("2d");
@@ -69,7 +69,7 @@ function Map(props) {
 
       <Controls handleInput={handleInput} />
       <GameInfo information={information} />
-      <Chat title={"Esc'D"} />
+      <Chat title={"EscD"} />
     </div>
   );
 }

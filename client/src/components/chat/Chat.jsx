@@ -17,14 +17,22 @@ export default class Chat extends Component {
     this.user = randomAnimal();
   }
 
+  // heroku endpoint - https://build-week-game-server.herokuapp.com/api/adv/say/
+
   componentWillMount() {
     this.pusher = new Pusher("7163921e28b59b2fa192", {
-      authEndpoint: "https://build-week-game-server.herokuapp.com/api/adv/say/",
+      authEndpoint: "http://127.0.0.1:8000/api/adv/pusher_auth/",
       cluster: "us3",
-      encrypted: true
+      encrypted: true,
+      forceTLS: true,
+      auth: {
+        headers: {
+          "X-CSRFToken": "{{ csrf_token }}"
+        }
+      }
     });
     // subscribe to the channel for this specific blog post
-    var channel = "private-" + slugify(this.props.title);
+    var channel = "private-lvl";
     this.post_channel = this.pusher.subscribe(channel);
   }
 
