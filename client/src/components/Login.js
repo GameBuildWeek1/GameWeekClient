@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
 import { Link} from "react-router-dom";
-
-import styles from '../styles/login.sass'
 function Login(props) {
   // const [isLogin, setLogin] = useState(false);
   const [userAcc, setUserAcc] = useState({ username: "", password: "" });
@@ -33,8 +31,9 @@ function Login(props) {
 
   return (
     <div className="wrapper">
-      <div className="login-form">
-        <form onSubmit={handleLogin}>
+      <h1>ESC'D</h1>
+      <div className="loginForm">
+        <form className="form" onSubmit={handleLogin}>
           <input
             type="text"
             name="username"
@@ -52,8 +51,8 @@ function Login(props) {
           />
           <button type="submit">Login</button>
         </form>
+        <Link to="/register">Register</Link>
       </div>
-      <Link to="/register">Register</Link>
     </div>
   );
 }
