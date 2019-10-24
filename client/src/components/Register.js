@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { HOST_URL } from './utils';
 import { Link} from "react-router-dom";
 
 
@@ -12,7 +13,7 @@ function Register(props) {
   const handleRegister = e => {
     e.preventDefault();
     axios
-      .post('https://build-week-game-server.herokuapp.com/api/registration/', registerAcc)
+      .post(`${HOST_URL}/api/registration/`, registerAcc)
         .then(res => {
           console.log(res.data);
           localStorage.setItem("key", res.data.key);
