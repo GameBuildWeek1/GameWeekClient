@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
-import { HOST_URL } from "./utils";
-import { Link} from "react-router-dom";
 
 function Login(props) {
   // const [isLogin, setLogin] = useState(false);
   const [userAcc, setUserAcc] = useState({ username: "", password: "" });
-  // const [isLoading, SetIsLoading] =
+
   const handleLogin = e => {
     e.preventDefault();
     axios
-      .post(`${HOST_URL}/api/login/`, userAcc)
+      .post("https://build-week-game-server.herokuapp.com/api/login/", userAcc)
       .then(res => {
         console.log(res.data);
         localStorage.setItem("key", res.data.key);
-        props.history.push('/game')
-        window.location.reload()
       })
       .catch(error => {
         console.log("error logging in", error);
@@ -30,13 +26,11 @@ function Login(props) {
     });
   };
 
-
   return (
     <div className="wrapper">
-      <div className="loginForm">
-        <h1>Welcome to ESC Dungeon</h1>
-        <form className="form" onSubmit={handleLogin}>
-          <input className="formInput"
+      <div className="login-form">
+        <form onSubmit={handleLogin}>
+          <input
             type="text"
             name="username"
             placeholder="username"
@@ -44,8 +38,8 @@ function Login(props) {
             onChange={loginChange}
           />
 
-          <input className="formInput"
-            type="password"
+          <input
+            type="text"
             name="password"
             placeholder="password"
             value={userAcc.password}
@@ -53,7 +47,6 @@ function Login(props) {
           />
           <button type="submit">Login</button>
         </form>
-        <Link to="/register">Register</Link>
       </div>
     </div>
   );
