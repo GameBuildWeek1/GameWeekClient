@@ -33,7 +33,7 @@ function Map(props) {
     setMove(e.target.value)
     let a = await moveplayer(move);
     //setInformation(a);
-    
+
   }
 
   const handleLogout = e => {
@@ -52,19 +52,21 @@ function Map(props) {
   // ctx.stroke();
 
   return (
-    <div className="map">
-      <canvas width="50000000" height="5000000" id="cavasMap"></canvas >{/* this one is set to display none on initalization */}
-      <canvas width="800" height="500" id="camera"></canvas >
-      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aecdcd44-8a2d-451f-af25-e82bf486f1b4/d70456w-af7c4d0d-b49e-485f-aefd-cb8928990831.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FlY2RjZDQ0LThhMmQtNDUxZi1hZjI1LWU4MmJmNDg2ZjFiNFwvZDcwNDU2dy1hZjdjNGQwZC1iNDllLTQ4NWYtYWVmZC1jYjg5Mjg5OTA4MzEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.dp1GDblxq0XVypsnmM01GQ0_anl1zyX08PgHPTOfqFY" style={{"display": "none"}} id="wallTexture"></img>
-      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/95357a63791945.5abc4ccf1326c.png" style={{"display": "none"}} id="floorTexture"></img>
-      <img src="https://i.imgur.com/711ppMR.png" style={{"display": "none"}} id="playerTexture"></img>
-{/*       <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
-      </canvas> */}
-      <button onClick={handleLogout}>Logout</button>
-      <Controls handleInput={handleInput} />
-      <GameInfo information={information} />
-    
-      <Chat title={'dungeon'}/>
+    <div className="game-bg">
+      <div className="map">
+        <canvas width="50000000" height="5000000" id="cavasMap"></canvas >{/* this one is set to display none on initalization */}
+        <canvas width="800" height="500" id="camera"></canvas >
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aecdcd44-8a2d-451f-af25-e82bf486f1b4/d70456w-af7c4d0d-b49e-485f-aefd-cb8928990831.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FlY2RjZDQ0LThhMmQtNDUxZi1hZjI1LWU4MmJmNDg2ZjFiNFwvZDcwNDU2dy1hZjdjNGQwZC1iNDllLTQ4NWYtYWVmZC1jYjg5Mjg5OTA4MzEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.dp1GDblxq0XVypsnmM01GQ0_anl1zyX08PgHPTOfqFY" style={{"display": "none"}} id="wallTexture"></img>
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/95357a63791945.5abc4ccf1326c.png" style={{"display": "none"}} id="floorTexture"></img>
+        <img src="https://i.imgur.com/711ppMR.png" style={{"display": "none"}} id="playerTexture"></img>
+  {/*       <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+        </canvas> */}
+        <button onClick={handleLogout}>Logout</button>
+        <Controls handleInput={handleInput} />
+        <GameInfo information={information} />
+
+        <Chat title={'dungeon'}/>
+      </div>
     </div>
   );
 }
@@ -116,7 +118,7 @@ var renderFrame = () =>
     player.x = loc.x;
     player.y = loc.y;
   }catch{}
-  
+
   var width = Math.round(ctxcam.canvas.width/tileSize);
   var height = Math.round(ctxcam.canvas.height/tileSize);
   var x = player.x- Math.round(width/2);
@@ -150,14 +152,14 @@ var renderFrame = () =>
         }
         ctxcam.drawImage(playerTexture,((p.x-camerpos.x))*tileSize - ((Math.round(a/3) % 10) +5), ((p.y-camerpos.y))*tileSize - ((Math.round(a/15) % 10)), tileSize,tileSize)
       }
-      
+
       ctxcam.font = "bold 15px Arial";
       ctxcam.textAlign = "center";
       ctxcam.fillStyle = "#000000AA";
       ctxcam.fillText(p.name,(p.x-camerpos.x)*tileSize + (tileSize/2) + 3, ((p.y-camerpos.y))*tileSize - (tileSize/4) + 3)
       ctxcam.fillStyle = "#FFFFFFAA";
       ctxcam.fillText(p.name,(p.x-camerpos.x)*tileSize + tileSize/2, ((p.y-camerpos.y))*tileSize - tileSize/4);
-      
+
     }
   });
   if(!playerTexture)
@@ -218,7 +220,7 @@ window.addEventListener("keydown", function(e) {
 
 const moveplayer = (move) =>
   {
-    
+
     axios
       .post(`${HOST_URL}/api/adv/move/`, {direction:move}, {headers: {
         'Content-type': 'application/json',
@@ -251,7 +253,7 @@ const moveplayer = (move) =>
 var randomColorOffset = Math.random();
 var renderMap = (ctxmap, sx,sy) =>
 {
-  
+
   for (var y=sy; y < mapTemp.length; y++){
     try{
       for(var x = sx; x < mapTemp[y].length; x++){
@@ -301,7 +303,7 @@ const updateplayers = (data) =>
   players = data.players;
   if(data.map)
     mapTemp = data.map.data;
-  if(!message) 
+  if(!message)
   {
     message = data.message;
   if(message)
