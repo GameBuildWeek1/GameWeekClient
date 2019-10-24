@@ -23,7 +23,7 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>ESC'D</h1>
+      {/* <h1>ESC'D</h1> */}
       {isLoggedIn ? (
         <div>
           <h2>Game Info</h2>
