@@ -184,7 +184,7 @@ var renderFrame = () =>
     ctxcam.fillText(message,ctxcam.canvas.width/2, 50);
   }
 }
-setInterval(renderFrame,300);
+setInterval(renderFrame,600);
 
 var controls = {
   left: false,
