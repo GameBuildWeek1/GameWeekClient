@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Pusher from "pusher-js";
-import slugify from "slugify";
 import randomAnimal from "random-animal-name-generator";
 
 import MessageList from "./MessageList";
