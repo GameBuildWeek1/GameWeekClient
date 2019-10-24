@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { HOST_URL } from './utils';
+import { Link} from "react-router-dom";
 
 
 
@@ -15,6 +16,8 @@ function Register(props) {
       .post(`${HOST_URL}/api/registration/`, registerAcc)
         .then(res => {
           localStorage.setItem("key", res.data.key);
+          props.history.push('/game')
+          window.location.reload()
         }).catch(error => {
           console.log('clg error', error)
         })
@@ -45,7 +48,7 @@ function Register(props) {
 
 <div className="register-form">
   <form onSubmit={handleRegister}>
-    
+
     <input
       type="text"
       name="username"
@@ -56,7 +59,7 @@ function Register(props) {
 
 
     <input
-      type="text"
+      type="password"
       name="password1"
       placeholder="password"
       value={registerAcc.password1}
@@ -64,7 +67,7 @@ function Register(props) {
     />
 
     <input
-      type="text"
+      type="password"
       name="password2"
       placeholder="enter password again"
       value={registerAcc.password2}
@@ -72,6 +75,7 @@ function Register(props) {
     />
     <button type="submit">Register</button>
   </form>
+  <Link to="/login">Already have an account?</Link>
   </div>
 </div>
   )

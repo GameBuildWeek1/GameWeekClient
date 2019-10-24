@@ -13,9 +13,17 @@ function App() {
       setIsLoggedIn(false);
     }
   }, []);
+
+  function toggleForm() {
+    if (isLoggedIn) {
+      setIsLoggedIn(false)
+    } else {
+      setIsLoggedIn(true)
+    }
+  }
   return (
     <div className="App">
-      <h2>Welcome!</h2>
+      {/* <h1>ESC'D</h1> */}
       {isLoggedIn ? (
         <div>
           <h2>Game Info</h2>
@@ -25,10 +33,8 @@ function App() {
         </div>
       ) : (
         <div>
-          <h2>Login</h2>
-          <Login />
-          <h2>Register</h2>
-          <Register />
+          <Route path="/login" component={Login}/>
+          <Route path="/register" component={Register}/>
         </div>
       )}
     </div>
