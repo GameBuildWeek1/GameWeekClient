@@ -14,6 +14,8 @@ function Register(props) {
       .post('https://build-week-game-server.herokuapp.com/api/registration/', registerAcc)
         .then(res => {
           localStorage.setItem("key", res.data.key);
+          props.history.push('/game')
+          window.location.reload()
         }).catch(error => {
           console.log('clg error', error)
         })
@@ -44,7 +46,7 @@ function Register(props) {
 
 <div className="register-form">
   <form onSubmit={handleRegister}>
-    
+
     <input
       type="text"
       name="username"
