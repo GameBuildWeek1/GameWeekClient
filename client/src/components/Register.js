@@ -8,7 +8,7 @@ import { Link} from "react-router-dom";
 function Register(props) {
   const [isLogin, setLogin] = useState(false)
   const [registerAcc, setRegisterAcc] = useState({username:"", password1:"", password2:""})
-
+  const [msg, setMsg] = useState("")
 
   const handleRegister = e => {
     e.preventDefault();
@@ -17,10 +17,9 @@ function Register(props) {
         .then(res => {
           console.log(res.data);
           localStorage.setItem("key", res.data.key);
-          props.history.push('/game')
           window.location.reload()
         }).catch(error => {
-          console.log('clg error', error)
+          setMsg("This password is too short", error)
         })
   }
 
@@ -72,6 +71,7 @@ function Register(props) {
           value={registerAcc.password2}
           onChange={registerChange}
         />
+        {msg ? <p>{msg}</p> : null}
         <button type="submit">Register</button>
       </form>
       <Link to="/login">Already have an account?</Link>
