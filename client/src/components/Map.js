@@ -5,7 +5,6 @@ import GameInfo from "./GameInfo";
 import Controls from "./Controls";
 import Chat from "./chat/Chat"
 import {HOST_URL} from "./utils";
-
 function Map(props) {
   const [information, setInformation] = useState({});
   const [isLoading, setLoading] = useState(false);
@@ -64,6 +63,7 @@ function Map(props) {
       <button onClick={handleLogout}>Logout</button>
       <Controls handleInput={handleInput} />
       <GameInfo information={information} />
+    
       <Chat title={'dungeon'}/>
     </div>
   );
