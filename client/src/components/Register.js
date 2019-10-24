@@ -14,6 +14,7 @@ function Register(props) {
     axios
       .post('https://build-week-game-server.herokuapp.com/api/registration/', registerAcc)
         .then(res => {
+          console.log(res.data);
           localStorage.setItem("key", res.data.key);
           props.history.push('/game')
           window.location.reload()
@@ -30,52 +31,50 @@ function Register(props) {
     })
   }
 
-  function toggleForm() {
-    if (isLogin) {
-      setLogin(false)
-    } else {
-      setLogin(true)
-    }
-  }
+  // function toggleForm() {
+  //   if (isLogin) {
+  //     setLogin(false)
+  //   } else {
+  //     setLogin(true)
+  //   }
+  // }
 
   return (
     <div className="wrapper">
-      <button onClick={toggleForm}>
-        {isLogin ? "Login" : "Register"}
-      </button>
+    <div className="loginForm">
+      <form className="form" onSubmit={handleRegister}>
+      <h1>Welcome to ESC Dungeon</h1>
+        <input
+          className="formInput"
+          type="text"
+          name="username"
+          placeholder="username"
+          value={registerAcc.username}
+          onChange={registerChange}
+        />
 
 
-<div className="register-form">
-  <form onSubmit={handleRegister}>
+        <input
+          className="formInput"
+          type="password"
+          name="password1"
+          placeholder="password"
+          value={registerAcc.password1}
+          onChange={registerChange}
+        />
 
-    <input
-      type="text"
-      name="username"
-      placeholder="username"
-      value={registerAcc.username}
-      onChange={registerChange}
-    />
-
-
-    <input
-      type="password"
-      name="password1"
-      placeholder="password"
-      value={registerAcc.password1}
-      onChange={registerChange}
-    />
-
-    <input
-      type="password"
-      name="password2"
-      placeholder="enter password again"
-      value={registerAcc.password2}
-      onChange={registerChange}
-    />
-    <button type="submit">Register</button>
-  </form>
-  <Link to="/login">Already have an account?</Link>
-  </div>
+        <input
+          className="formInput"
+          type="password"
+          name="password2"
+          placeholder="enter password again"
+          value={registerAcc.password2}
+          onChange={registerChange}
+        />
+        <button type="submit">Register</button>
+      </form>
+      <Link to="/login">Already have an account?</Link>
+    </div>
 </div>
   )
 }

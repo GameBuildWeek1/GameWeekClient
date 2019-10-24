@@ -32,8 +32,8 @@ function Login(props) {
   return (
     <div className="wrapper">
       <div className="loginForm">
-        <h1>Welcome to ESC Dungeon</h1>
         <form className="form" onSubmit={handleLogin}>
+          <h1>Welcome to ESC Dungeon</h1>
           <input className="formInput"
             type="text"
             name="username"
