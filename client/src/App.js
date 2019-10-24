@@ -5,6 +5,7 @@ import Register from "./components/Register"
 import Map from "./components/Map"
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoginButton, setIsLoginButton] = useState(true);
 
   useEffect(() => {
     if (localStorage.getItem("key")) {
@@ -13,28 +14,35 @@ function App() {
       setIsLoggedIn(false);
     }
   }, []);
-
+  
   function toggleForm() {
-    if (isLoggedIn) {
-      setIsLoggedIn(false)
-    } else {
-      setIsLoggedIn(true)
-    }
+    console.log('hello?', isLoginButton)
+    // if (isLoginButton) {
+    //   setIsLoginButton(true)
+    //     // return <Login />
+    // } else {
+    //   setIsLoginButton(false)
+    //     // return <Register />
+    // }
+    setIsLoginButton(!isLoginButton)
   }
   return (
     <div className="App">
       {/* <h1>ESC'D</h1> */}
       {isLoggedIn ? (
         <div>
-          <h2>Game Info</h2>
 
-          <Route path="/game" component={Map}/>
+         <Map />
 
         </div>
       ) : (
         <div>
-          <Route path="/login" component={Login}/>
-          <Route path="/register" component={Register}/>
+          {
+            isLoginButton ?( <Register />) : ( <Login /> )
+          }
+          <button onClick={e => toggleForm(e)}>
+            {isLoginButton ? "Login":"Register"}
+          </button>
         </div>
       )}
     </div>
