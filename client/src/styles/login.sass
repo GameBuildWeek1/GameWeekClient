@@ -1,3 +1,5 @@
+@import variables
+
 .wrapper
   background-image: url('../assets/homebg3.jpg')
   background-repeat: no-repeat;
@@ -8,11 +10,17 @@
   align-items: center;
   padding: 30vh
   .loginForm
-    width: 15%
 
-    border: 1px solid red
+    background: $modalbg
+    border-radius: 6%
+    h1
+      font-size: 1.6em
+      color: white
+    a
+      color: white
+      text-decoration: none
     .form
-      height: 30vh;
+
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -20,4 +28,16 @@
       align-self: center;
       margin: 0 auto;
       border: 1px solid;
-      padding: 5%;
+      padding: 30%
+
+      button
+        cursor: pointer;
+        height: 2.5em;
+        border-radius: 70px;
+
+      .formInput
+        font-size: 1em;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 10px;
+        border: 2px solid black;;
