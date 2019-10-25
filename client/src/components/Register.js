@@ -17,7 +17,9 @@ function Register(props) {
         window.location.reload();
       })
       .catch(error => {
-        setMsg("This password is too short", error);
+        console.log(error.response.data);
+        let k = Object.keys(error.response.data);
+        setMsg(`${error.response.data[k[0]][0]}`, error);
       });
   };
 
@@ -59,7 +61,9 @@ function Register(props) {
             value={registerAcc.password2}
             onChange={registerChange}
           />
-          {msg ? <p>{msg}</p> : null}
+          <div style={{minWidth: "200px", minHeight: "60px", maxHeight: "60px", maxWidth: "200px"}}>
+            {msg}
+          </div>
           <button type="submit">Register</button>
         </form>
       </div>
