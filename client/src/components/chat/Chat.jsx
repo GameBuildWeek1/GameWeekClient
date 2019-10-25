@@ -43,7 +43,7 @@ export default class Chat extends Component {
       <div className="chatbox">
         <div className="post-single">
           <div className="post-single__inner">
-            <h1>Chat</h1>
+            <h1>Chat Component</h1>
             <form onSubmit={this.onSubmit}>
               <input
                 type="text"
