@@ -244,7 +244,7 @@ var renderFrame = () => {
     ctxcam.fillText(message, ctxcam.canvas.width / 2, 50);
   }
 };
-setInterval(renderFrame, 600);
+setInterval(renderFrame, 500);
 
 var controls = {
   left: false,
@@ -311,7 +311,6 @@ const moveplayer = move => {
         .then(res => {
           updateplayers(res.data);
           chatmessages = [...res.data.chatmessages, ...chatmessages]
-          console.log(chatmessages)
           return res.data;
         }).catch(error => {
           console.log('error moving..',error)

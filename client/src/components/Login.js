@@ -28,7 +28,7 @@ function Login(props) {
       [e.target.name]: e.target.value
     });
   };
-
+  console.log(msg);
   return (
     <div className="wrapper">
       <div className="loginForm">
@@ -41,6 +41,7 @@ function Login(props) {
             placeholder="username"
             value={userAcc.username}
             onChange={loginChange}
+            stype={{minWidth: "200px"}}
           />
 
           <input
@@ -51,7 +52,9 @@ function Login(props) {
             value={userAcc.password}
             onChange={loginChange}
           />
-          {msg ? <p>{msg}</p> : null}
+          <div style={{minWidth: "200px", minHeight: "30px", maxHeight: "30px", maxWidth: "200px"}}>
+          {msg}
+          </div>
           <button type="submit">Login</button>
         </form>
       </div>

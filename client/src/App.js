@@ -32,7 +32,7 @@ function App() {
       ) : (
         <div className="logBox">
           {isLoginButton ? <Register /> : <Login />}
-          <button className="toggleLogBtn" onClick={e => toggleForm(e)}>
+          <button className="toggleLogBtn" onClick={e => toggleForm(e) } style={{marginTop: "-30px"}}>
             {isLoginButton ? "Switch to Login" : "Switch to Register"}
           </button>
         </div>
