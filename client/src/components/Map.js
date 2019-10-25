@@ -47,11 +47,6 @@ function Map(props) {
     localStorage.clear();
     window.location.reload();
   };
-  // var c = document.getElementById("myCanvas");
-  // var ctx = c.getContext("2d");
-  // ctx.moveTo(0,0);
-  // ctx.lineTo(200,100);
-  // ctx.stroke();
 
   return (
     <div className="game-bg">
@@ -323,22 +318,6 @@ const moveplayer = move => {
         })
   }
 
-/* window.addEventListener("keyup", function(e) {
-  switch (e.keyCode) {
-    case 37: // left arrow
-      controls.left = false;
-      break;
-    case 38: // up arrow
-      controls.up = false;
-      break;
-    case 39: // right arrow
-      controls.right = false;
-      break;
-    case 40: // down arrow
-      controls.down = false;
-      break;
-  }
-}, false); */
 var randomColorOffset = Math.random();
 var renderMap = (ctxmap, sx, sy) => {
   for (var y = sy; y < mapTemp.length; y++) {

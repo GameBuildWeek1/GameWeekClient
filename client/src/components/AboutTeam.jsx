@@ -1,11 +1,16 @@
 import React from "react";
+import chase from "../img/chase.png";
+import alan from "../img/alan.png";
+import preston from "../img/preston.jpg";
+import tom from "../img/tom.jpg";
 
 export default function AboutTeam() {
   return (
     <div className="teamBox">
       <div className="member">
-        <h1 className="name">name</h1>
-        <h2 className="role">role</h2>
+        <img src={chase} alt="chase wenner" />
+        <h1 className="name">Chase Wenner</h1>
+        <h2 className="role">Full Stack</h2>
         <a
           href="https://github.com/chasester"
           className="github"
@@ -18,9 +23,11 @@ export default function AboutTeam() {
           linkedin
         </a>
       </div>
+
       <div className="member">
-        <h1 className="name">name</h1>
-        <h2 className="role">role</h2>
+        <img src={alan} alt="alan perez" />
+        <h1 className="name">Alan Perez</h1>
+        <h2 className="role">Full Stack</h2>
         <a
           href="https://www.linkedin.com/in/alanarturoperez/"
           className="github"
@@ -33,9 +40,11 @@ export default function AboutTeam() {
           linkedin
         </a>
       </div>
+
       <div className="member">
-        <h1 className="name">name</h1>
-        <h2 className="role">role</h2>
+        <img src={preston} alt="preston burton" />
+        <h1 className="name">Preston Burton</h1>
+        <h2 className="role">Full Stack</h2>
         <a
           href="https://github.com/Oliver-Strange"
           className="github"
@@ -48,9 +57,11 @@ export default function AboutTeam() {
           linkedin
         </a>
       </div>
+
       <div className="member">
-        <h1 className="name">name</h1>
-        <h2 className="role">role</h2>
+        <img src={tom} alt="tom higgins" />
+        <h1 className="name">Tom Higgins</h1>
+        <h2 className="role">Data Science</h2>
         <a
           href="https://github.com/Higgins2718"
           className="github"

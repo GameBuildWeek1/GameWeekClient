@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
 import { HOST_URL } from "./utils";
-import { Link} from "react-router-dom";
 
 function Login(props) {
-  // const [isLogin, setLogin] = useState(false);
   const [userAcc, setUserAcc] = useState({ username: "", password: "" });
-  const [msg, setMsg] = useState("")
+  const [msg, setMsg] = useState("");
 
-  // const [isLoading, SetIsLoading] =
   const handleLogin = e => {
     e.preventDefault();
     axios
@@ -17,11 +14,11 @@ function Login(props) {
       .then(res => {
         console.log(res.data);
         localStorage.setItem("key", res.data.key);
-        window.location.reload()
+        window.location.reload();
       })
       .catch(error => {
         console.log("error logging in", error);
-        setMsg("INCORRECT USER/PASS", error)
+        setMsg("INCORRECT USER/PASS", error);
       });
   };
 
@@ -32,13 +29,13 @@ function Login(props) {
     });
   };
 
-
   return (
     <div className="wrapper">
       <div className="loginForm">
         <form className="form" onSubmit={handleLogin}>
           <h1>Welcome to ESC Dungeon</h1>
-          <input className="formInput"
+          <input
+            className="formInput"
             type="text"
             name="username"
             placeholder="username"
@@ -46,7 +43,8 @@ function Login(props) {
             onChange={loginChange}
           />
 
-          <input className="formInput"
+          <input
+            className="formInput"
             type="password"
             name="password"
             placeholder="password"
@@ -56,7 +54,6 @@ function Login(props) {
           {msg ? <p>{msg}</p> : null}
           <button type="submit">Login</button>
         </form>
-        {/* <Link to="/register">Register</Link> */}
       </div>
     </div>
   );
