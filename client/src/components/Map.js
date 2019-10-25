@@ -66,7 +66,7 @@ function Map(props) {
           <Controls handleInput={handleInput} />
           <GameInfo information={information} />
 
-          <Chat title={'dungeon'}/>
+          {/* <Chat title={'dungeon'}/> */}
         </div>
       </div>
     </div>
