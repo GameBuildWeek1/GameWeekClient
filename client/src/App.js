@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Route, Router as BrowserRouter, Switch } from "react-router-dom";
 import Login from "./components/Login";
-import Register from "./components/Register"
-import Map from "./components/Map"
+import Register from "./components/Register";
+import Map from "./components/Map";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -16,9 +16,9 @@ function App() {
 
   function toggleForm() {
     if (isLoggedIn) {
-      setIsLoggedIn(false)
+      setIsLoggedIn(false);
     } else {
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
     }
   }
   return (
@@ -28,18 +28,23 @@ function App() {
         <div>
           <h2>Game Info</h2>
 
-          <Route path="/game" component={Map}/>
-
+          <Map />
         </div>
       ) : (
         <div>
-          <Route path="/login" component={Login}/>
-          <Route path="/register" component={Register}/>
+          {toggleForm ? (
+            <div>
+              <Login />
+            </div>
+          ) : (
+            <div>
+              <Register />
+            </div>
+          )}
         </div>
       )}
     </div>
   );
 }
-
 
 export default App;
