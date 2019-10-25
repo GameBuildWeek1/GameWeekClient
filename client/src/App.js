@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Route, Router as BrowserRouter, Switch } from "react-router-dom";
+
 import Login from "./components/Login";
-import Register from "./components/Register"
-import Map from "./components/Map"
+import Register from "./components/Register";
+import Map from "./components/Map";
+import AboutGame from "./components/AboutGame";
+import AboutTeam from "./components/AboutTeam";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginButton, setIsLoginButton] = useState(true);
@@ -14,40 +17,30 @@ function App() {
       setIsLoggedIn(false);
     }
   }, []);
-  
+
   function toggleForm() {
-    console.log('hello?', isLoginButton)
-    // if (isLoginButton) {
-    //   setIsLoginButton(true)
-    //     // return <Login />
-    // } else {
-    //   setIsLoginButton(false)
-    //     // return <Register />
-    // }
-    setIsLoginButton(!isLoginButton)
+    console.log("hello?", isLoginButton);
+    setIsLoginButton(!isLoginButton);
   }
   return (
     <div className="App">
-      {/* <h1>ESC'D</h1> */}
+      <AboutGame />
       {isLoggedIn ? (
-        <div>
-
-         <Map />
-
+        <div className="mapBox">
+          <Map />
         </div>
       ) : (
-        <div>
-          {
-            isLoginButton ?( <Register />) : ( <Login /> )
-          }
-          <button onClick={e => toggleForm(e)}>
-            {isLoginButton ? "Login":"Register"}
+        <div className="logBox">
+          {isLoginButton ? <Register /> : <Login />}
+          <button className="toggleLogBtn" onClick={e => toggleForm(e)}>
+            {isLoginButton ? "Switch to Login" : "Switch to Register"}
           </button>
         </div>
       )}
+
+      <AboutTeam />
     </div>
   );
 }
-
 
 export default App;
