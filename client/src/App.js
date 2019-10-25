@@ -32,7 +32,7 @@ function App() {
         <div>
           <AboutGame />
           {isLoginButton ? <Register /> : <Login />}
-          <AboutTeam />
+          {/* <AboutTeam /> */}
           <button onClick={e => toggleForm(e)}>{isLoginButton ? "Login" : "Register"}</button>
         </div>
       )}
