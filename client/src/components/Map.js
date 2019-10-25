@@ -56,7 +56,7 @@ function Map(props) {
       <div className="container">
         <div className="map">
           <canvas width="50000000" height="5000000" id="cavasMap"></canvas >{/* this one is set to display none on initalization */}
-          <canvas width="800" height="500" id="camera"></canvas >
+          <canvas className="mapCanvas" width="800" height="500" id="camera"></canvas >
           <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aecdcd44-8a2d-451f-af25-e82bf486f1b4/d70456w-af7c4d0d-b49e-485f-aefd-cb8928990831.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FlY2RjZDQ0LThhMmQtNDUxZi1hZjI1LWU4MmJmNDg2ZjFiNFwvZDcwNDU2dy1hZjdjNGQwZC1iNDllLTQ4NWYtYWVmZC1jYjg5Mjg5OTA4MzEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.dp1GDblxq0XVypsnmM01GQ0_anl1zyX08PgHPTOfqFY" style={{"display": "none"}} id="wallTexture"></img>
           <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/95357a63791945.5abc4ccf1326c.png" style={{"display": "none"}} id="floorTexture"></img>
           <img src="https://i.imgur.com/711ppMR.png" style={{"display": "none"}} id="playerTexture"></img>
