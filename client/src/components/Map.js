@@ -45,12 +45,6 @@ function Map(props) {
   console.log("clg move", move);
   console.log("clg move obj", { move });
 
-  // var c = document.getElementById("myCanvas");
-  // var ctx = c.getContext("2d");
-  // ctx.moveTo(0,0);
-  // ctx.lineTo(200,100);
-  // ctx.stroke();
-
   return (
     <div className="game-bg">
       <div className="container">
@@ -73,9 +67,9 @@ function Map(props) {
             style={{ display: "none" }}
             id="playerTexture"
           ></img>
-          {/*       <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
-          </canvas> */}
-          <button onClick={handleLogout}>Logout</button>
+          <button className="logoutBtn" onClick={handleLogout}>
+            Logout
+          </button>
           <Controls handleInput={handleInput} />
           {/* <GameInfo information={information} /> */}
 
@@ -325,22 +319,6 @@ const moveplayer = move => {
     });
 };
 
-/* window.addEventListener("keyup", function(e) {
-  switch (e.keyCode) {
-    case 37: // left arrow
-      controls.left = false;
-      break;
-    case 38: // up arrow
-      controls.up = false;
-      break;
-    case 39: // right arrow
-      controls.right = false;
-      break;
-    case 40: // down arrow
-      controls.down = false;
-      break;
-  }
-}, false); */
 var randomColorOffset = Math.random();
 var renderMap = (ctxmap, sx, sy) => {
   for (var y = sy; y < mapTemp.length; y++) {

@@ -24,18 +24,21 @@ function App() {
   }
   return (
     <div className="App">
+      <AboutGame />
       {isLoggedIn ? (
-        <div>
+        <div className="mapBox">
           <Map />
         </div>
       ) : (
-        <div>
-          <AboutGame />
+        <div className="logBox">
           {isLoginButton ? <Register /> : <Login />}
-          <AboutTeam />
-          <button onClick={e => toggleForm(e)}>{isLoginButton ? "Login" : "Register"}</button>
+          <button className="toggleLogBtn" onClick={e => toggleForm(e)}>
+            {isLoginButton ? "Switch to Login" : "Switch to Register"}
+          </button>
         </div>
       )}
+
+      <AboutTeam />
     </div>
   );
 }
