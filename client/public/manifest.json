@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Esc D",
+  "name": "React Game connected to Django/Python/PostgreSQL Back End",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "Gamefavicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
