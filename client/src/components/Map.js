@@ -64,7 +64,7 @@ function Map(props) {
           </canvas> */}
           <button onClick={handleLogout}>Logout</button>
           <Controls handleInput={handleInput} />
-          <GameInfo information={information} />
+          {/* <GameInfo information={information} /> */}
 
           {/* <Chat title={'dungeon'}/> */}
         </div>
