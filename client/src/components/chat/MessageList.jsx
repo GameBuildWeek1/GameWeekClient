@@ -23,11 +23,12 @@ class MessageList extends React.Component {
   renderMessages() {
     return this.props.messages.map((msg, index) => {
       return (
-        <div className="msg" key={index}>
-          <div className="msg-from">{msg.by}</div>
-          <div className="msg-body">{msg.body}</div>
-          <div className="msg-time">
-            <TimeAgo date={msg.time} minPeriod={60} />
+        <div style={{margin: "10px 20px"}}>
+          <div className="msg" key={index} style={{"display": "flex", margin: "2px 0px"}}>
+            <div className="msg-from"style={{marginRight: "4px"}}>{msg.name}: </div><div className="msg-body">{msg.message}</div>
+          </div>
+          <div className="msg-time" style={{display: "flex", fontSize:"11px", color: "#AAA"}}>
+            <TimeAgo date={msg.time*1000} minPeriod={60} />
           </div>
         </div>
       );

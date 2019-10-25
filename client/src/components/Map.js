@@ -3,13 +3,18 @@ import axios from "axios";
 
 // import GameInfo from "./GameInfo";
 import Controls from "./Controls";
-// mport Chat from "./chat/Chat";
-import { HOST_URL } from "./utils";
+import Chat from "./chat/Chat"
+import {HOST_URL} from "./utils";
+let T = null;
+let chatmessages = [];
 
 function Map(props) {
   const [information, setInformation] = useState({});
   const [isLoading, setLoading] = useState(false);
   const [move, setMove] = useState("");
+  const [chat, setChat] = useState([]);
+  if(T === null)
+    T = setInterval(()=>setChat(chatmessages), 1000)
   useEffect(() => {
     setLoading(true);
 
@@ -42,13 +47,12 @@ function Map(props) {
     localStorage.clear();
     window.location.reload();
   };
-  console.log("clg move", move);
-  console.log("clg move obj", { move });
 
   return (
     <div className="game-bg">
       <div className="container">
-        <div className="map">
+      <button onClick={handleLogout} style={{padding: "10px 20px", fontSize: "20px"}}>Logout</button>
+        <div className="map" style={{ border: "5px solid black", borderRadius: "10px", background: "#000", boxShadow: "10px 20px", marginBottom: "20px"}}>
           <canvas width="50000000" height="5000000" id="cavasMap"></canvas>
           {/* this one is set to display none on initalization */}
           <canvas className="mapCanvas" width="800" height="500" id="camera"></canvas>
@@ -67,14 +71,16 @@ function Map(props) {
             style={{ display: "none" }}
             id="playerTexture"
           ></img>
-          <button className="logoutBtn" onClick={handleLogout}>
-            Logout
-          </button>
-          <Controls handleInput={handleInput} />
+          </div>
+          {/*       <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+          </canvas> */}
+          {/* <button onClick={handleLogout}>Logout</button> */}
+          {/* <Controls handleInput={handleInput} /> */}
+          
+          {/* <Controls handleInput={handleInput} /> */}
           {/* <GameInfo information={information} /> */}
 
-          {/* <Chat title={'dungeon'}/> */}
-        </div>
+          <Chat title={'Help Channel'} chats={chatmessages}/>
       </div>
     </div>
   );
@@ -112,7 +118,6 @@ var createMap = data => {
   ctxmap.canvas.style.display = "none";
   player = data.curpos;
   mapTemp = data.map.data;
-  console.log(data);
   tileSize = 40;
   ctxcam = document.getElementById("camera").getContext("2d");
   renderFrame();
@@ -297,27 +302,21 @@ window.addEventListener(
   },
   false
 );
-
 const moveplayer = move => {
-  axios
-    .post(
-      `${HOST_URL}/api/adv/move/`,
-      { direction: move },
-      {
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Token ${localStorage.getItem("key")}`
-        }
-      }
-    )
-    .then(res => {
-      updateplayers(res.data);
-      return res.data;
-    })
-    .catch(error => {
-      console.log("error moving..", error);
-    });
-};
+    axios
+      .post(`${HOST_URL}/api/adv/move/`, {direction:move}, {headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Token ${localStorage.getItem("key")}`
+      }})
+        .then(res => {
+          updateplayers(res.data);
+          chatmessages = [...res.data.chatmessages, ...chatmessages]
+          console.log(chatmessages)
+          return res.data;
+        }).catch(error => {
+          console.log('error moving..',error)
+        })
+  }
 
 var randomColorOffset = Math.random();
 var renderMap = (ctxmap, sx, sy) => {

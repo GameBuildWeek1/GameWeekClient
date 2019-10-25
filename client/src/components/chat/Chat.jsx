@@ -3,6 +3,8 @@ import Pusher from "pusher-js";
 import randomAnimal from "random-animal-name-generator";
 
 import MessageList from "./MessageList";
+import Axios from "axios";
+import { HOST_URL } from "../utils";
 
 export default class Chat extends Component {
   constructor(props) {
@@ -44,13 +46,18 @@ export default class Chat extends Component {
       });
     });
   }
-
+  componentWillUpdate()
+  {
+    setTimeout(() => {
+      this.setState(this.state);
+    }, 500);
+  }
   render() {
     return (
-      <div className="chatbox">
+      <div className="chatbox" style={{backgroundColor: "#000000AA", width:"75%", margin:"0 auto", color: "#FFFFFF", height: "30vh", overflow:"hidden"}}>
         <div className="post-single">
           <div className="post-single__inner">
-            <h1>Chat Component</h1>
+            <h1 style={{paddingBottom: "10px", fontSize:"26px"}}>{this.props.title}</h1>
             <form onSubmit={this.onSubmit}>
               <input
                 type="text"
@@ -58,9 +65,11 @@ export default class Chat extends Component {
                 placeholder="Type your message here.."
                 value={this.state.message}
                 onChange={this.handleChange}
+                maxLength={80}
+                style={{width: "75%"}}
               />
             </form>
-            {this.state.messages && <MessageList messages={this.state.messages} />}
+            {this.props.chats && <MessageList messages={this.props.chats} />}
           </div>
         </div>
       </div>
@@ -71,22 +80,21 @@ export default class Chat extends Component {
     var message = e.target.value;
     this.setState({
       message: message
+      
     });
   }
 
   onSubmit(e) {
     e.preventDefault();
+    if(this.state.message == "")
+      return;
     let text = this.state.message;
-    let message = {
-      by: this.user,
-      body: text,
-      time: new Date()
-    };
-
-    this.post_channel.trigger("client-on-message", message);
-    this.setState({
-      message: "",
-      messages: this.state.messages.concat(message)
-    });
+    Axios
+    .post(`${HOST_URL}/api/adv/say/`, {message: this.state.message}, {headers: {
+      'Content-type': 'application/json',
+      'Authorization': `Token ${localStorage.getItem("key")}`
+    }})
+    this.setState({message: ""})
   }
+  
 }
