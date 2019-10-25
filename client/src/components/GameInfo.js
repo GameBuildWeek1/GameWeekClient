@@ -22,6 +22,10 @@ function GameInfo(props) {
       <p>
         description: {props.information.description}
       </p>
+
+      <p>
+        players: {props.information.players}
+      </p>
     </div>
   )
 }
