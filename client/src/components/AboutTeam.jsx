@@ -29,7 +29,7 @@ export default function AboutTeam() {
         <h1 className="name">Alan Perez</h1>
         <h2 className="role">Full Stack</h2>
         <a
-          href="https://www.linkedin.com/in/alanarturoperez/"
+          href="https://github.com/alanperez"
           className="github"
           target="_blank"
           rel="noopener noreferrer"
