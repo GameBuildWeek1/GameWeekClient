@@ -287,7 +287,7 @@ window.addEventListener(
         controls.left = true;
         break;
       case 38: // up arrow
-      case 69:
+      case 87: 
         controls.up = true;
         break;
       case 39: // right arrow
