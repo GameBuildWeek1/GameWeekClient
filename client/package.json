@@ -6,7 +6,7 @@
     "@pusher/chatkit-client-react": "^0.1.2",
     "axios": "^0.19.0",
     "jwt-decode": "^2.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "pusher-js": "^5.0.2",
     "random-animal-name-generator": "^0.1.1",
     "react": "^16.10.2",
